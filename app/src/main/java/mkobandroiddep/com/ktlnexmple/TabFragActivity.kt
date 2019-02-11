@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
+import android.util.Log
 import android.widget.FrameLayout
 import mkobandroiddep.com.ktlnexmple.fragments.JavaFragment
 import mkobandroiddep.com.ktlnexmple.fragments.KotlinFragment
@@ -59,4 +60,6 @@ class TabFragActivity : AppCompatActivity() {
         })
 
     }
+
+
 }

@@ -17,6 +17,7 @@ class ListActivity : AppCompatActivity(),View.OnClickListener {
     val languge= arrayOf<String>("abc","abe","abr","abt","aby")
     lateinit var btnDialog:AppCompatButton
     lateinit var btnTabFragment:AppCompatButton
+    lateinit var btnTabViewpager:AppCompatButton
     lateinit var seekBar: SeekBar
 
 
@@ -57,10 +58,12 @@ class ListActivity : AppCompatActivity(),View.OnClickListener {
 
         btnDialog       =findViewById(R.id.btn_dialog)
         btnTabFragment  =findViewById(R.id.btn_tab_frag)
+        btnTabViewpager =findViewById(R.id.btn_tab_viewpager)
         seekBar         =findViewById(R.id.seekbar_Default)
 
         btnDialog.setOnClickListener(this)
         btnTabFragment.setOnClickListener(this)
+        btnTabViewpager.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -68,6 +71,9 @@ class ListActivity : AppCompatActivity(),View.OnClickListener {
             alertDialog()
         }else if(v==btnTabFragment){
             intent = Intent(this,TabFragActivity::class.java)
+            startActivity(intent)
+        }else if(v==btnTabViewpager){
+            intent = Intent(this,TabViewPager::class.java)
             startActivity(intent)
         }
     }

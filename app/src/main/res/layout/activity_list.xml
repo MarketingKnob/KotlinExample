@@ -29,6 +29,18 @@
                 android:layout_alignParentEnd="true"
                 android:background="@color/colorPrimary"/>
 
+        <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_tab_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tab View Pager"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/btn_tab_frag"
+                android:background="@color/colorPrimary"/>
+
         <SeekBar
                 android:id="@+id/seekbar_Default"
                 android:layout_width="match_parent"
@@ -36,7 +48,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_below="@+id/btn_dialog"/>
+                android:layout_below="@+id/btn_tab_viewpager"/>
 
     </RelativeLayout>
 
