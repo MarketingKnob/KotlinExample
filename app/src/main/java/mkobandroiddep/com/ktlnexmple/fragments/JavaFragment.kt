@@ -1,15 +1,13 @@
 package mkobandroiddep.com.ktlnexmple.fragments
 
 
-import android.app.Activity
-import android.content.Context
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -27,18 +25,17 @@ class JavaFragment : Fragment() {
 
     lateinit var listView_details: ListView
     var arrayList: ArrayList<ModelApi> = ArrayList()
+
     val client = OkHttpClient()
-    lateinit var activity: Activity
     lateinit var cd: ConnectionDetector
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_java, container, false)
-
-        listView_details = view.findViewById(R.id.listView)
+        val activity = activity
 
         cd = ConnectionDetector()
-        cd.isConnectingToInternet(activity)
+        cd.isConnectingToInternet(activity!!)
         if (cd.isConnectingToInternet(activity)) {
             run("http://planetory.agency/artist/Webservice/get_all_jobs")
         } else {
@@ -47,14 +44,10 @@ class JavaFragment : Fragment() {
 
         }
 
-
-
         return view
     }
 
-
     fun run(url: String) {
-
         val request = Request.Builder()
             .url(url)
             .build()
@@ -80,10 +73,10 @@ class JavaFragment : Fragment() {
 
                 }
 
-                activity.runOnUiThread {
+                activity!!.runOnUiThread {
 
                     val listAdapter:ListItemAdapter
-                    listAdapter= ListItemAdapter(FragmentActivity(),arrayList)
+                    listAdapter= ListItemAdapter(activity!!,arrayList)
                     listView_details.adapter=listAdapter
 
                 }
@@ -98,8 +91,5 @@ class JavaFragment : Fragment() {
         })
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        activity         = FragmentActivity()
-    }
+
 }
