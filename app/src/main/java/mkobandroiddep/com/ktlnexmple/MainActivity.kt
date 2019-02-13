@@ -1,6 +1,8 @@
 package mkobandroiddep.com.ktlnexmple
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.AppCompatButton
@@ -19,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var strEmail:String
     lateinit var strPass:String
     lateinit var strConfPass:String
+    lateinit var sharedPreferences: SharedPreferences
+    private val sharedPrefFile = "kotlinsharedpreference"
 
     val Tag = "MainActivity"
 
@@ -44,6 +48,12 @@ class MainActivity : AppCompatActivity() {
                     intent.putExtra("Pass",strConfPass)
                     startActivity(intent)
 
+                    val editor:SharedPreferences.Editor =  sharedPreferences.edit()
+                    editor.putString("id_email",strEmail)
+                    editor.putString("pass_key",strConfPass)
+                    editor.apply()
+                    editor.commit()
+
                 } else {
                     Toast.makeText(this@MainActivity, "Pass not same.", Toast.LENGTH_LONG).show()
                 }
@@ -59,6 +69,10 @@ class MainActivity : AppCompatActivity() {
         etPass          =findViewById(R.id.et_pass)
         etConfPass      =findViewById(R.id.et_conf_pass)
         btnVerify       =findViewById(R.id.btn_verify)
+
+        sharedPreferences = this.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
+
+
     }
 }
 
